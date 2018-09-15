@@ -26,8 +26,10 @@ public class RegExpHelper {
 
 	public boolean isAddr(String addr) {
 		String[] split = addr.split(":");
-		if (split.length != 2)	return false;
-		else	return this.isIPv4(split[0]) && this.isPort(split[1]);
+		if (split.length != 2)
+			return false;
+		else
+			return this.isIPv4(split[0]) && this.isPort(split[1]);
 	}
 
 	public boolean isIPv4(String ipv4) {
