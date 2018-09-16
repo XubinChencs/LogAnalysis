@@ -157,9 +157,9 @@ public class EsHelper {
 
 		do {
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
-				System.out.println(hit.getSourceAsString());
+				System.out.println(hit.getSource().get(includes[0]));
 				if (targetPath != null) {
-					IOHelper.getInstance().writeToFile(hit.getSourceAsString() + "\r\n", targetPath, true);
+					IOHelper.getInstance().writeToFile(hit.getSource().get(includes[0]) + "\r\n", targetPath, true);
 				}
 				count++;
 				if (maxCount > 0 && count >= maxCount)
