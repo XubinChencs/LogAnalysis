@@ -182,8 +182,7 @@ public class EsHelper {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		EsHelper esHelper = new EsHelper("my-cluster", "192.168.1.78:9300");// new EsHelper("nic-multi-logs",
-																			// "10.1.1.201:9300");
+		EsHelper esHelper = new EsHelper("nic-multi-logs", "10.1.1.201:9300");
 		esHelper.executeMatchAllQuery(new String[] { "syslog-2018-09-17" }, new String[] { "@message" }, null, "target2.txt",
 				100000);
 	}
