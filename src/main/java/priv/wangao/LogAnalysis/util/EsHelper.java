@@ -185,7 +185,7 @@ public class EsHelper {
 		// TODO Auto-generated method stub
 		EsHelper esHelper = new EsHelper("nic-multi-logs", "10.1.1.201:9300");
 		esHelper.executeMatchAllQuery(new String[] { "niclog-4th-2018.01.30" }, new String[] { "message" }, null,
-				"target.txt", 100000);
+				"target.txt", 100000); 
 	}
 
 }
