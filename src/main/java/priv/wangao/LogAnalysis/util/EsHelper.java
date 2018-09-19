@@ -4,17 +4,20 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortOrder;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 /**
  * @author WangAo
@@ -28,6 +31,14 @@ public class EsHelper {
 	private String cluster = null;
 	// addrs : 集群地址数组
 	private List<String> addrs = new ArrayList<String>();
+	// DEFAULT_BATCHSIZE : 滚动查询批量默认大小
+	private final int DEFAULT_BATCHSIZE = 1000;
+	// DEFAULT_BATCHSIZE : 滚动查询默认超时时间
+	private final int DEFAULT_TTLSECOND = 1200;
+	// batchSize : 滚动查询批量大小
+	private int batchSize;
+	// ttlSecond : 滚动查询超时时间
+	private int ttlSecond;
 
 	/**
 	 * @Title:EsHelper
@@ -40,7 +51,6 @@ public class EsHelper {
 	 *             集群地址无效时，抛出异常
 	 */
 	public EsHelper(String cluster, String addrs) throws Exception {
-		// TODO Auto-generated constructor stub
 		String[] split = addrs.split(";");
 
 		if (split == null || split.length == 0) {
@@ -55,8 +65,9 @@ public class EsHelper {
 		}
 
 		this.cluster = cluster;
-
 		this.client = this.getClientInstance();
+		this.batchSize = DEFAULT_BATCHSIZE;
+		this.ttlSecond = DEFAULT_TTLSECOND;
 	}
 
 	/**
@@ -69,18 +80,17 @@ public class EsHelper {
 	 */
 	private TransportClient getClientInstance() throws NumberFormatException, UnknownHostException {
 		if (this.client == null) {
-			Settings settings = Settings.builder().put("cluster.name", cluster).build();
-			// this.client = new PreBuiltTransportClient(settings);
-			this.client = TransportClient.builder().settings(settings).build();
-			;
+			Settings settings = Settings.builder().put("cluster.name", this.cluster).build();
+			this.client = new PreBuiltTransportClient(settings);
+			// this.client = TransportClient.builder().settings(settings).build();
 
 			for (String add : addrs) {
 				String[] split = add.split(":");
-				// this.client.addTransportAddress(
-				// new TransportAddress(InetAddress.getByName(split[0]),
-				// Integer.parseInt(split[1])));
 				this.client.addTransportAddress(
-						new InetSocketTransportAddress(InetAddress.getByName(split[0]), Integer.parseInt(split[1])));
+						new TransportAddress(InetAddress.getByName(split[0]), Integer.parseInt(split[1])));
+				// this.client.addTransportAddress(
+				// new InetSocketTransportAddress(InetAddress.getByName(split[0]),
+				// Integer.parseInt(split[1])));
 
 			}
 		}
@@ -88,107 +98,94 @@ public class EsHelper {
 	}
 
 	/**
-	 * @Title: getRequestBuilderv24
-	 * @Description: 获取请求体对象
-	 * @param index
-	 *            目标索引
-	 * @param includes
-	 *            需要的field数组
-	 * @param excludes
-	 *            不要的field数组
-	 * @param qb
-	 *            请求体对象
-	 * @param batchSize
-	 *            批量查询尺寸
-	 * @param ttlSeconds
-	 *            连接过期时间
-	 * @return
-	 * @return: SearchRequestBuilder
+	 * @Title: getBatchSize
+	 * @Description: 获取批量查询超时时间
+	 * @return 批量查询超时时间
+	 * @return: int
 	 */
-	private SearchRequestBuilder getRequestBuilderv24(String index, String[] includes, String[] excludes,
-			QueryBuilder qb, int batchSize, int ttlSeconds) {
-		SearchRequestBuilder requestBuilder = this.client.prepareSearch(index);
-
-		requestBuilder.setFetchSource(includes, excludes);
-
-		requestBuilder.addSort("_doc", SortOrder.ASC).setScroll(TimeValue.timeValueSeconds(ttlSeconds)).setQuery(qb)
-				.setSize(batchSize);
-
-		return requestBuilder;
+	public int getBatchSize() {
+		return batchSize;
 	}
 
 	/**
-	 * @Title: getMatchAllQuery
-	 * @Description: 获取match_all查询体对象
-	 * @return match_all查询体对象
-	 * @return: QueryBuilder
-	 */
-	private QueryBuilder getMatchAllQuery() {
-		return QueryBuilders.matchAllQuery();
-	}
-
-	/**
-	 * @Title: scrollRequest
-	 * @Description: 执行滚动查询
-	 * @param index
-	 *            目标索引名
-	 * @param includes
-	 *            需要的field数组
-	 * @param excludes
-	 *            不要的field数组
-	 * @param qb
-	 *            查询体对象
+	 * @Title: setBatchSize
+	 * @Description: 设置批量查询超时时间
 	 * @param batchSize
-	 *            批量查询大小
-	 * @param ttlSeconds
-	 *            超时时间
-	 * @param maxCount
-	 *            设定最大获取数量，超过即停止获取
-	 * @param targetPath
-	 *            输出的目标路径
+	 *            批量查询超时时间
 	 * @return: void
 	 */
-	private void scrollRequest(String index, String[] includes, String[] excludes, QueryBuilder qb, int batchSize,
-			int ttlSeconds, int maxCount, String targetPath) {
-		SearchResponse scrollResp = this.getRequestBuilderv24(index, includes, excludes, qb, batchSize, ttlSeconds)
-				.get();
+	public void setBatchSize(int batchSize) {
+		this.batchSize = batchSize;
+	}
 
+	/**
+	 * @Title: getTtlSecond
+	 * @Description: 获取滚动查询超时时间
+	 * @return 滚动查询超时时间
+	 * @return: int
+	 */
+	public int getTtlSecond() {
+		return ttlSecond;
+	}
+
+	/**
+	 * @Title: setTtlSecond
+	 * @Description: 设置滚动查询超时时间
+	 * @param ttlSecond
+	 *            滚动查询超时时间
+	 * @return: void
+	 */
+	public void setTtlSecond(int ttlSecond) {
+		this.ttlSecond = ttlSecond;
+	}
+
+	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath, int maxCnt) {
+		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
+				: this.client.prepareSearch(indices);
+		searchQuery.setFetchSource(includes, excludes);
+		searchQuery.addSort("_doc", SortOrder.ASC).setScroll(TimeValue.timeValueSeconds(this.ttlSecond))
+				.setQuery(this.matchAllQuery());
+
+		SearchResponse scrollResp = searchQuery.get();
 		int count = 0;
 
 		do {
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
-				System.out.println(hit.getSource().get(includes[0]));
-				if (targetPath != null) {
-					IOHelper.getInstance().writeToFile(hit.getSource().get(includes[0]) + "\r\n", targetPath, true);
+				System.out.println(hit.getSourceAsString());
+				if (outputPath != null) {
+					IOHelper.getInstance().writeToFile(hit.getSourceAsString(), outputPath, true);
 				}
 				count++;
-				if (maxCount > 0 && count >= maxCount)
+				if (maxCnt > 0 && count >= maxCnt) {
 					break;
+				}
 			}
-			if (maxCount > 0 && count >= maxCount)
+			if (maxCnt > 0 && count >= maxCnt) {
 				break;
+			}
 			scrollResp = client.prepareSearchScroll(scrollResp.getScrollId())
-					.setScroll(TimeValue.timeValueSeconds(ttlSeconds)).execute().actionGet();
-		} while (scrollResp.getHits().getHits().length != 0 && count < 100000);
+					.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).execute().actionGet();
+		} while (scrollResp.getHits().getHits().length != 0);
 	}
 
-	/**
-	 * @Title: matchAllQuery
-	 * @Description: 对外暴露的match_all方法查询
-	 * @param index
-	 *            目标索引名
-	 * @param targetPath
-	 *            目标路径
-	 * @return: void
-	 */
-	public void matchAllQuery(String index, String[] includes, String[] excludes, String targetPath) {
-		this.scrollRequest(index, includes, excludes, this.getMatchAllQuery(), 1000, 60, 100000, targetPath);
+	private QueryBuilder matchAllQuery() {
+		return QueryBuilders.matchAllQuery();
+	}
+
+	private QueryBuilder termsQuery(Map<String, String> terms) {
+		BoolQueryBuilder result = QueryBuilders.boolQuery();
+		for (Map.Entry<String, String> entry : terms.entrySet()) {
+			result.filter(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
+		}
+		return result;
 	}
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		EsHelper esHelper = new EsHelper("nic-multi-logs", "10.1.1.201:9300");
-		esHelper.matchAllQuery("niclog-4th-2018.01.30", new String[] { "message" }, null, "target.txt");
+		EsHelper esHelper = new EsHelper("my-cluster", "192.168.1.78:9300");// new EsHelper("nic-multi-logs",
+																			// "10.1.1.201:9300");
+		esHelper.executeMatchAllQuery(new String[] { "syslog-2018-09-17" }, new String[] { "@message" }, null, "target2.txt",
+				100000);
 	}
 
 }
