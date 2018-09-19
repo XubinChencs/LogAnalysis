@@ -10,6 +10,7 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -17,7 +18,6 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortOrder;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 /**
  * @author WangAo
@@ -81,16 +81,16 @@ public class EsHelper {
 	private TransportClient getClientInstance() throws NumberFormatException, UnknownHostException {
 		if (this.client == null) {
 			Settings settings = Settings.builder().put("cluster.name", this.cluster).build();
-			this.client = new PreBuiltTransportClient(settings);
-			// this.client = TransportClient.builder().settings(settings).build();
+			// this.client = new PreBuiltTransportClient(settings);
+			this.client = TransportClient.builder().settings(settings).build();
 
 			for (String add : addrs) {
 				String[] split = add.split(":");
-				this.client.addTransportAddress(
-						new TransportAddress(InetAddress.getByName(split[0]), Integer.parseInt(split[1])));
 				// this.client.addTransportAddress(
-				// new InetSocketTransportAddress(InetAddress.getByName(split[0]),
+				// new TransportAddress(InetAddress.getByName(split[0]),
 				// Integer.parseInt(split[1])));
+				this.client.addTransportAddress(
+						new InetSocketTransportAddress(InetAddress.getByName(split[0]), Integer.parseInt(split[1])));
 
 			}
 		}
@@ -139,7 +139,8 @@ public class EsHelper {
 		this.ttlSecond = ttlSecond;
 	}
 
-	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath, int maxCnt) {
+	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath,
+			int maxCnt) {
 		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
 				: this.client.prepareSearch(indices);
 		searchQuery.setFetchSource(includes, excludes);
@@ -183,8 +184,8 @@ public class EsHelper {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		EsHelper esHelper = new EsHelper("nic-multi-logs", "10.1.1.201:9300");
-		esHelper.executeMatchAllQuery(new String[] { "syslog-2018-09-17" }, new String[] { "@message" }, null, "target2.txt",
-				100000);
+		esHelper.executeMatchAllQuery(new String[] { "niclog-4th-2018.01.30" }, new String[] { "message" }, null,
+				"target.txt", 100000);
 	}
 
 }
