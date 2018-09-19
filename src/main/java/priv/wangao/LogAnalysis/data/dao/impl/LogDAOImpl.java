@@ -2,11 +2,6 @@ package priv.wangao.LogAnalysis.data.dao.impl;
 
 import java.util.Map;
 
-import org.elasticsearch.action.search.SearchRequestBuilder;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-
 import priv.wangao.LogAnalysis.data.dao.LogDAO;
 import priv.wangao.LogAnalysis.util.EsHelper;
 
@@ -30,6 +25,7 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public void matchAllEntry(String[] indices, String[] includes, String[] excludes, String outputPath, int maxCnt) {
 		// TODO Auto-generated method stub
+		this.esHelper.executeMatchAllQuery(indices, includes, excludes, outputPath, maxCnt);
 	}
 
 	/* (non-Javadoc)
@@ -37,9 +33,9 @@ public class LogDAOImpl implements LogDAO {
 	 */
 	@Override
 	public void filterTermsEntry(String[] indices, Map<String, String> terms, Map<String, String> sorts, String[] includes,
-			String[] excludes, String outputPath, String maxCnt) {
+			String[] excludes, String outputPath, int maxCnt) {
 		// TODO Auto-generated method stub
-
+		this.esHelper.executeTermsFilter(indices, terms, sorts, includes, excludes, outputPath, maxCnt);
 	}
 
 	public static void main(String[] args) {

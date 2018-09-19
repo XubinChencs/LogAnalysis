@@ -1,8 +1,10 @@
 package priv.wangao.LogAnalysis.util;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -139,7 +141,8 @@ public class EsHelper {
 		this.ttlSecond = ttlSecond;
 	}
 
-	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath, int maxCnt) {
+	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath,
+			int maxCnt) {
 		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
 				: this.client.prepareSearch(indices);
 		searchQuery.setFetchSource(includes, excludes);
@@ -147,8 +150,36 @@ public class EsHelper {
 				.setQuery(this.matchAllQuery());
 
 		SearchResponse scrollResp = searchQuery.get();
-		int count = 0;
+		doScroll(scrollResp, outputPath, maxCnt);
+	}
 
+	public void executeTermsFilter(String[] indices, Map<String, String> terms, Map<String, String> sorts,
+			String[] includes, String[] excludes, String outputPath, int maxCnt) {
+		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
+				: this.client.prepareSearch(indices);
+		searchQuery.setFetchSource(includes, excludes);
+		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.termsQuery(terms));
+
+		for (Map.Entry<String, String> sort : sorts.entrySet()) {
+			if (sort.getValue().equals("desc")) {
+				searchQuery.addSort(sort.getKey(), SortOrder.DESC);
+			} else {
+				searchQuery.addSort(sort.getKey(), SortOrder.ASC);
+			}
+		}
+
+		SearchResponse scrollResp = searchQuery.get();
+		doScroll(scrollResp, outputPath, maxCnt);
+	}
+
+	private void doScroll(SearchResponse scrollResp, String outputPath, int maxCnt) {
+		if (outputPath != null) {
+			File file = new File(outputPath);
+			if (file.exists() == true) {
+				file.delete();
+			}
+		}
+		int count = 0;
 		do {
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
 				System.out.println(hit.getSourceAsString());
@@ -182,10 +213,29 @@ public class EsHelper {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		EsHelper esHelper = new EsHelper("my-cluster", "192.168.1.78:9300");// new EsHelper("nic-multi-logs",
-																			// "10.1.1.201:9300");
-		esHelper.executeMatchAllQuery(new String[] { "syslog-2018-09-17" }, new String[] { "@message" }, null, "target2.txt",
-				100000);
+		EsHelper esHelper = new EsHelper("my-cluster", "192.168.1.78:9300");
+		Map<String, String> terms = new HashMap<String, String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
+				put("host", "192.168.1.102");
+			}
+		};
+		Map<String, String> sorts = new HashMap<String, String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			{
+				put("timestamp", "asc");
+			}
+		};
+		esHelper.executeTermsFilter(null, terms, sorts, new String[] { "@message", "timestamp" }, null,
+				"RHZZ-syslog.txt", 300000);
 	}
 
 }
