@@ -44,5 +44,5 @@ public interface LogDAO {
 	 * @return: void
 	 */
 	void filterTermsEntry(String[] indices, Map<String, String> terms, Map<String, String> sorts, String[] includes,
-			String[] excludes, String outputPath, String maxCnt);
+			String[] excludes, String outputPath, int maxCnt);
 }
