@@ -72,7 +72,7 @@ public class IOHelper {
 			while ((curLine = br.readLine()) != null) {
 				result.add(curLine);
 				count++;
-				if (count == 3000)
+				if (count == 2000)
 					break;
 			}
 		} catch (FileNotFoundException e) {
