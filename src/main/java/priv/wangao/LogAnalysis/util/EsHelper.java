@@ -1,5 +1,6 @@
 package priv.wangao.LogAnalysis.util;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -148,8 +149,36 @@ public class EsHelper {
 				.setQuery(this.matchAllQuery());
 
 		SearchResponse scrollResp = searchQuery.get();
-		int count = 0;
+		doScroll(scrollResp, outputPath, maxCnt);
+	}
 
+	public void executeTermsFilter(String[] indices, Map<String, String> terms, Map<String, String> sorts,
+			String[] includes, String[] excludes, String outputPath, int maxCnt) {
+		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
+				: this.client.prepareSearch(indices);
+		searchQuery.setFetchSource(includes, excludes);
+		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.termsQuery(terms));
+
+		for (Map.Entry<String, String> sort : sorts.entrySet()) {
+			if (sort.getValue().equals("desc")) {
+				searchQuery.addSort(sort.getKey(), SortOrder.DESC);
+			} else {
+				searchQuery.addSort(sort.getKey(), SortOrder.ASC);
+			}
+		}
+
+		SearchResponse scrollResp = searchQuery.get();
+		doScroll(scrollResp, outputPath, maxCnt);
+	}
+
+	private void doScroll(SearchResponse scrollResp, String outputPath, int maxCnt) {
+		if (outputPath != null) {
+			File file = new File(outputPath);
+			if (file.exists() == true) {
+				file.delete();
+			}
+		}
+		int count = 0;
 		do {
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
 				System.out.println(hit.getSourceAsString());
