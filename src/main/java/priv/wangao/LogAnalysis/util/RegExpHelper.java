@@ -17,7 +17,6 @@ public class RegExpHelper {
 	private static final String PORT_REG = "(?:[1-9]\\d{1,5})";
 
 	private RegExpHelper() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static RegExpHelper getInstance() {
@@ -41,7 +40,6 @@ public class RegExpHelper {
 
 	}
 
-	@SuppressWarnings("unused")
 	private boolean match(String regex, String target) {
 
 		Pattern pattern = Pattern.compile(regex);
@@ -52,7 +50,6 @@ public class RegExpHelper {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -7,8 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
-
 import priv.wangao.LogAnalysis.util.IOHelper;
 
 public class TestLogSig {
@@ -17,20 +15,8 @@ public class TestLogSig {
 	private Map<String, List<String>> termPairMap;
 	// termMap : 日志短语映射，用于分组后的签名生成
 	private Map<String, List<String>> termMap;
-	// K : 日志分组的组数
-	private int K = 5;
 	private String sourcePath;
 	private String groupPrefix;
-
-	private class TermKey {
-		public String term;
-		public int index;
-
-		public TermKey(String term, int index) {
-			this.term = term;
-			this.index = index;
-		}
-	}
 
 	/**
 	 * @Title:TestLogSig
@@ -362,13 +348,12 @@ public class TestLogSig {
 			}
 		}
 		double max = (double) Integer.MIN_VALUE;
-		int messageIndex = -1, targetGroup = -1, tail = rand.nextInt(messageCnt);
+		int messageIndex = -1, targetGroup = -1;
 		int from = -1, to = -1;
 		for (int i = 0; i < maxIteration; i++) {
 			max = (double) Integer.MIN_VALUE;
 			messageIndex = -1;
 			targetGroup = -1;
-			tail = rand.nextInt(messageCnt);
 
 			for (int j = 0; j < 1000; j++) {
 				from = rand.nextInt(messageCnt);
@@ -443,6 +428,7 @@ public class TestLogSig {
 		this.getBestGroupNum(messages, groupIndex);
 	}
 
+	@SuppressWarnings("unused")
 	private List<String> pretreat(List<String> messages) {
 		List<String> result = new ArrayList<String>();
 		messages.forEach(item -> {
@@ -462,7 +448,6 @@ public class TestLogSig {
 	public String getGroupSign(List<String> group) {
 		StringBuilder result = new StringBuilder();
 		Map<String, Integer> union = this.getGroupTermUnion(group);
-		List<String> terms = null;
 		for (Map.Entry<String, Integer> entry : union.entrySet()) {
 			if (entry.getValue() * 2 > group.size()) {
 				result.append(entry.getKey()).append(" ");
