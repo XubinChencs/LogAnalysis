@@ -1,0 +1,4 @@
+Microsoft-Windows-GroupPolicy[16244]: 已检测到以前的组策略客户端服务实例。 参数: d8d4873e-3a42-4c6c-a867-dd4c2fe3940e
+Microsoft-Windows-KnownFolders[15892]: 验证路径为“C:\ProgramData”的已知文件夹 {62AB5D82-FDC1-4DC3-A9DD-070D1D495D97} 时发生错误 0x80070005。1535447519000
+Microsoft-Windows-KnownFolders[15892]: 验证路径为“C:\Users\DELL\Favorites”的已知文件夹 {1777F761-68AD-4D8A-87BD-30B759FA33DD} 时发生错误 0x80070005。1535447519000
+Microsoft-Windows-KnownFolders[15892]: 验证路径为“C:\Users\DELL\AppData\Roaming”的已知文件夹 {3EB685DB-65F9-4CF6-A03A-E3EF65729F3D} 时发生错误 0x80070005。1535447519000

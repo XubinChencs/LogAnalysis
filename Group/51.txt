@@ -1,0 +1,5 @@
+Microsoft-Windows-Shell-Core[7780]: AppResolver 扫描已启动。
+Microsoft-Windows-Shell-Core[7780]: AppResolver 缓存已提交。
+Microsoft-Windows-Shell-Core[7780]: AppResolver 扫描已停止。
+Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 0 [UserId] 0x0 [ErrorCode]。1535446631000
+Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 17056888 [UserId] 0x0 [ErrorCode]。1535446631000

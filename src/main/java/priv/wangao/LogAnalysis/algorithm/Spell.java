@@ -1,9 +1,11 @@
 package priv.wangao.LogAnalysis.algorithm;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import priv.wangao.LogAnalysis.util.DataHelper;
 import priv.wangao.LogAnalysis.util.IOHelper;
 
 public class Spell {
@@ -65,13 +67,14 @@ public class Spell {
 			if (lcsSeq.size() > maxSeqLen) {
 				maxSeqLen = lcsSeq.size();
 				targetLCS = lcs;
-			} else if (lcsSeq.size() == maxSeqLen && targetLCS != null && targetLCS.getSeq().size() < lcs.getSeq().size()) {
+			} else if (lcsSeq.size() == maxSeqLen && targetLCS != null
+					&& targetLCS.getSeq().size() < lcs.getSeq().size()) {
 				maxSeqLen = lcsSeq.size();
 				targetLCS = lcs;
 			}
 		}
-		
-		if (maxSeqLen*2 > tokens.size() && targetLCS != null) {
+
+		if (maxSeqLen * 2 > tokens.size() && targetLCS != null) {
 			targetLCS.setSeq(this.getLcsSeq(targetLCS.getSeq(), tokens));
 			targetLCS.append(log);
 		} else {
@@ -115,19 +118,24 @@ public class Spell {
 		}
 		return result;
 	}
-	
+
 	public void display() {
+		File file = new File("Group");
+		if (file.exists() == true) {
+			file.delete();
+		}
 		int count = 0;
 		for (LCS lcs : this.LCSMap) {
-			System.out.println(lcs.getSeq());
-			IOHelper.getInstance().writeToFile(lcs.getLogs(), "Group " + count + ".txt", true);
+			System.out.println("Group " + count + ":-> " + lcs.getSeq());
+			IOHelper.getInstance().writeToFile(lcs.getLogs(), "Group/" + count + ".txt", true);
 			count++;
 		}
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<String> logs = IOHelper.getInstance().readFromFile("target.txt");
+		List<String> logs = IOHelper.getInstance().readFromFile("RHZZ-syslog.txt");
+		logs = DataHelper.getInstance().jsonsToList(logs, "@message", "timestamp");
 		Spell spell = new Spell();
 		spell.compute(logs);
 		spell.display();

@@ -1,0 +1,6 @@
+Microsoft-Windows-PushNotifications-Platform[6192]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。
+Microsoft-Windows-PushNotifications-Platform[4240]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。
+Microsoft-Windows-PushNotifications-Platform[6192]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。
+Microsoft-Windows-PushNotifications-Platform[4240]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。
+Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。1535446591000
+Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。1535448372000

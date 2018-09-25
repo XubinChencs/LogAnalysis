@@ -1,0 +1,5 @@
+Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。
+Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。
+Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。
+Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。
+Microsoft-Client-Licensing-Platform[14548]: ClipSVC 服务正在启动。调用方: TriggerStarted1535445778000

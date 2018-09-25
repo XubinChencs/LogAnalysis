@@ -1,0 +1,2 @@
+Microsoft-Windows-GroupPolicy[15828]: 已检测到以前的组策略客户端服务实例。 参数: 1f6238f6-4bb9-4fb6-826c-7be878cc4e42
+Microsoft-Windows-GroupPolicy[15828]: 当前已将组策略客户端服务配置为共享服务。1535446591000

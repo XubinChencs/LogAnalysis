@@ -35,7 +35,13 @@ public class IOHelper {
 	}
 
 	public void writeToFile(List<String> context, String filePath, boolean append) {
-		try (FileOutputStream fos = new FileOutputStream(new File(filePath), append);
+		
+		File file = new File(filePath);
+		if (file.getParentFile() != null && file.getParentFile().exists() == false) {
+			file.getParentFile().mkdirs();
+		}
+		
+		try (FileOutputStream fos = new FileOutputStream(file, append);
 				OutputStreamWriter osw = new OutputStreamWriter(fos, Charset.forName("UTF-8"));
 				BufferedWriter bw = new BufferedWriter(osw);) {
 			for (String line : context) {
@@ -49,7 +55,13 @@ public class IOHelper {
 	}
 
 	public void writeToFile(Map<String, Integer> context, String filePath, boolean append) {
-		try (FileOutputStream fos = new FileOutputStream(new File(filePath), append);
+		
+		File file = new File(filePath);
+		if (file.getParentFile() != null && file.getParentFile().exists() == false) {
+			file.getParentFile().mkdirs();
+		}
+		
+		try (FileOutputStream fos = new FileOutputStream(file, append);
 				OutputStreamWriter osw = new OutputStreamWriter(fos, Charset.forName("UTF-8"));
 				BufferedWriter bw = new BufferedWriter(osw);) {
 			for (Map.Entry<String, Integer> entry : context.entrySet()) {

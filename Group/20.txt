@@ -1,0 +1,3 @@
+Microsoft-Windows-GroupPolicy[15828]: 当前已将组策略客户端服务配置为共享服务。
+Microsoft-Windows-PushNotifications-Platform[4240]: 连接提供程序的状态已更改为 7。1535446591000
+Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 7。1535446591000

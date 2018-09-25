@@ -1,0 +1,6 @@
+Microsoft-Windows-PushNotifications-Platform[6192]: 已使用以下参数取消应用程序的注册: Microsoft.Explorer.Notification.{2B679BCE-FE6D-8C7E-8264-9BF40BA76ACF} [AppUserModelId] 操作成功完成。 [ErrorCode]
+Microsoft-Windows-PushNotifications-Platform[6192]: 已使用以下参数取消应用程序的注册: Microsoft.Explorer.Notification.{1012D2C3-BD47-930E-BD8A-DFFE6D83A69F} [AppUserModelId] 操作成功完成。 [ErrorCode]
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.908950100Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.908950100Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.908950100Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.908950100Z。1535446729000

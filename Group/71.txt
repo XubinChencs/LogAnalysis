@@ -1,0 +1,2 @@
+Microsoft-Windows-GroupPolicy[16244]: 初始化和读取组策略客户端服务的当前服务配置。
+Microsoft-Client-Licensing-Platform[12300]: ClipSVC 服务正在运行。版本 10.0.17134.11535447519000

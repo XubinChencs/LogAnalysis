@@ -1,0 +1,6 @@
+Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: 无 更改原因: SuspectArpProbeFailed)
+Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V6 功能: 无 更改原因: SuspectDnsProbeFailedAndNoGateway)
+Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: Internet 更改原因: ActiveDnsProbeSucceeded)
+Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: 本地 更改原因: SuspectDnsProbeFailed)
+Microsoft-Windows-GroupPolicy[15828]: 组策略从会话 0 的 Winlogon 接收到通知 创建会话。1535446591000
+Microsoft-Windows-GroupPolicy[16244]: 组策略从会话 0 的 Winlogon 接收到通知 创建会话。1535448372000

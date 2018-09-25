@@ -1,0 +1,1 @@
+Microsoft-Windows-GroupPolicy[16244]: 当前已将组策略客户端服务配置为共享服务。1535448372000
