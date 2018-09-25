@@ -1,0 +1,3 @@
+Microsoft-Windows-GroupPolicy[16244]: 当前已将组策略客户端服务配置为共享服务。
+Microsoft-Windows-AppXDeployment[2512]: microsoft.windowscommunicationsapps_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535447519000
+Microsoft-Windows-AppXDeployment[2512]: microsoft.windowscommunicationsapps_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535447519000

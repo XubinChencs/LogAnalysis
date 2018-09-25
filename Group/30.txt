@@ -1,0 +1,3 @@
+Microsoft-Windows-GroupPolicy[15828]: 已开始组策略服务初始化阶段。
+Microsoft-Windows-GroupPolicy[15828]: 组策略会话已启动。1535446591000
+Microsoft-Windows-GroupPolicy[15828]: 组策略会话已启动。1535446591000

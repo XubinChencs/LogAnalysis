@@ -1,0 +1,2 @@
+Microsoft-Windows-GroupPolicy[16244]: 组策略会话已返回到 winlogon。1535448372000
+Microsoft-Windows-GroupPolicy[16244]: 组策略会话已返回到 winlogon。1535448372000

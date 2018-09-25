@@ -1,0 +1,3 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 的主机 client.wns.windows.com 初始化 WNP 传输层解析 DNS。
+Microsoft-Windows-PushNotifications-Platform[4240]: 已针对代码为 操作成功完成。 的 Data Connection 完成 WNP 传输层解析 DNS。
+Microsoft-Windows-GroupPolicy[15828]: 组策略服务已启动。1535446591000

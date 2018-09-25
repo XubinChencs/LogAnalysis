@@ -1,0 +1,7 @@
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。
+Microsoft-Windows-PushNotifications-Platform[4240]: 连接提供程序的状态已更改为 Disconnected。1535446631000
+Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 Disconnected。1535446631000
+Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 Disconnected。1535446631000

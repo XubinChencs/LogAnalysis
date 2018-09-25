@@ -1,0 +1,5 @@
+ESENT[0]: svchost (2924,G,98) 由于 Beta 网站模式设置 0x800000，ESENT 中已启用 Beta 功能 EseDiskFlushConsistency。
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在启动会话 1 - ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。1535446729000
+Microsoft-Windows-RestartManager[7780]: 正在结束会话 1 已启动 ‎2018‎-‎08‎-‎28T08:58:49.862082300Z。1535446729000
