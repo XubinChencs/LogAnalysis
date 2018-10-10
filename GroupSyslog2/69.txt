@@ -1,0 +1,2 @@
+Microsoft-Client-Licensing-Platform[12300]: ClipSVC 服务正在启动。调用方: TriggerStarted1535447519000
+Microsoft-Client-Licensing-Platform[12300]: ClipSVC 服务已关闭。1535447819000

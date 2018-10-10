@@ -1,0 +1,8 @@
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535445778000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535445778000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535446529000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535446529000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535447519000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535447519000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535448265000
+Microsoft-Windows-AppXDeployment[2512]: Microsoft.OneConnect_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535448265000

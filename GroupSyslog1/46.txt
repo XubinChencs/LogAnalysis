@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 0 [UserId] 0x0 [ErrorCode]。
+Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 17056888 [UserId] 0x0 [ErrorCode]。

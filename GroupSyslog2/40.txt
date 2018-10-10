@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 的主机 client.wns.windows.com 初始化 WNP 传输层解析 DNS。1535446629000
+Microsoft-Windows-PushNotifications-Platform[4240]: 已针对代码为 操作成功完成。 的 Data Connection 完成 WNP 传输层解析 DNS。1535446629000

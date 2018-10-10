@@ -1,0 +1,2 @@
+PNB10>dnsquery3 1517278483 74-25-8a-c2-37-00 219.224.136.152 50452 8.8.8.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517278483 74-25-8a-c2-37-00 219.224.162.10 61973 8.8.8.8 53 DYJ-PC.dhcp server

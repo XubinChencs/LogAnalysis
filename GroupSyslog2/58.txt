@@ -1,0 +1,1 @@
+ESENT[0]: svchost (2924,G,98) 由于 Beta 网站模式设置 0x800000，ESENT 中已启用 Beta 功能 EseDiskFlushConsistency。1535446859000

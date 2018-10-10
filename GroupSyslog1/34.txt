@@ -1,0 +1,1 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 完成设备 ID 为 00180002C8BACE70 的 Device Compact Ticket 请求。

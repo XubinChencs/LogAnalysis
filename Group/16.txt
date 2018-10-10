@@ -1,7 +1,0 @@
-Microsoft-Windows-PushNotifications-Platform[4240]: 连接提供程序的状态已更改为 7。
-Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 7。
-Microsoft-Windows-PushNotifications-Platform[4240]: 连接提供程序的状态已更改为 7。
-Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 7。
-Microsoft-Windows-AppXDeployment[2512]: Microsoft.Windows.Cortana_cw5n1h2txyewy 注册状态良好，跳过重新注册1535446199000
-Microsoft-Windows-AppXDeployment[2512]: Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy 注册状态良好，跳过重新注册1535446199000
-Microsoft-Windows-AppXDeployment[2512]: Microsoft.Windows.Cortana_cw5n1h2txyewy 注册状态良好，跳过重新注册1535446199000

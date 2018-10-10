@@ -1,0 +1,1 @@
+Microsoft-Windows-Kernel-EventTracing[4]: 已达到会话“AutoLogger-Diagtrack-Listener”的最大文件大小。因此，文件“C:\WINDOWS\System32\LogFiles\WMI\AutoLogger-Diagtrack-Listener.etl”中可能会丢失(不会记录)事件。最大文件大小当前设置为 33554432 字节。

@@ -1,6 +1,0 @@
-Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。
-Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。
-Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。1535445778000
-Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。1535446529000
-Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。1535447519000
-Microsoft-Windows-Security-Mitigations[6192]: 进程”\Device\HarddiskVolume3\Windows\System32\svchost.exe“(PID 6192)已被阻止，无法加载非 Microsoft 签名的二进制”\Program Files (x86)\Sangfor\SSL\ClientComponent\SangforNspX64.dll“。1535448178000

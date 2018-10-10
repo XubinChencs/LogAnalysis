@@ -1,7 +1,0 @@
-Microsoft-Windows-NetworkProfile[2156]: 网络状态更改已触发  	新的 Internet 连接配置文件: false  	连接成本已更改: false  	域连接级别已更改: false  	网络连接级别已更改: true  	主机名已更改: false  	Wwan 注册状态已更改: false  	Tethering 操作状态已更改: false  	Tethering 客户端计数已更改: false
-Microsoft-Windows-NetworkProfile[2156]: 网络状态更改已触发  	新的 Internet 连接配置文件: false  	连接成本已更改: false  	域连接级别已更改: false  	网络连接级别已更改: true  	主机名已更改: false  	Wwan 注册状态已更改: false  	Tethering 操作状态已更改: false  	Tethering 客户端计数已更改: false
-Microsoft-Windows-NetworkProfile[2156]: 网络状态更改已触发  	新的 Internet 连接配置文件: false  	连接成本已更改: false  	域连接级别已更改: false  	网络连接级别已更改: true  	主机名已更改: false  	Wwan 注册状态已更改: false  	Tethering 操作状态已更改: false  	Tethering 客户端计数已更改: false
-Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: 无 更改原因: SuspectArpProbeFailed)1535446591000
-Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V6 功能: 无 更改原因: SuspectDnsProbeFailedAndNoGateway)1535446602000
-Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: Internet 更改原因: ActiveDnsProbeSucceeded)1535446627000
-Microsoft-Windows-NCSI[1932]: {BECB49EE-CD39-4087-879E-AC3701CFC520} 上的功能更改(0x6008002000000 系列: V4 功能: 本地 更改原因: SuspectDnsProbeFailed)1535448371000

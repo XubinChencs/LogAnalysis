@@ -1,2 +1,0 @@
-Microsoft-Windows-Kernel-EventTracing[4]: 已达到会话“AutoLogger-Diagtrack-Listener”的最大文件大小。因此，文件“C:\WINDOWS\System32\LogFiles\WMI\AutoLogger-Diagtrack-Listener.etl”中可能会丢失(不会记录)事件。最大文件大小当前设置为 33554432 字节。
-Microsoft-Windows-Security-SPP[0]: 规则引擎已报告 VL 激活尝试失败。  原因:0xC004F074  AppId = 0ff1ce15-a989-479d-af46-f275c6370663，SkuId = d450596f-894d-49e0-966a-fd39ed4c4c64  触发器=TimerEvent1535447215000

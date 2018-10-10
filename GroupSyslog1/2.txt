@@ -1,0 +1,13 @@
+Microsoft-Windows-Audio[11696]: 格式: 1  采样率 : 11025Hz  已卸载: false
+Microsoft-Windows-Audio[11696]: 格式: 1  采样率 : 11025Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[11696]: 格式: 1  采样率 : 11025Hz  已卸载: false
+Microsoft-Windows-Audio[11696]: 格式: 1  采样率 : 11025Hz  已卸载: false
+Microsoft-Windows-Audio[11696]: 格式: 1  采样率 : 11025Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false
+Microsoft-Windows-Audio[6848]: 格式: 1  采样率 : 44100Hz  已卸载: false

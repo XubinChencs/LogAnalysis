@@ -1,5 +1,0 @@
-Microsoft-Windows-PushNotifications-Platform[4240]: 必须启用 GP 和 MDM 中的云通知以接收推送通知。GroupPolicyValue: true，MDMPolicyValue: true。
-Microsoft-Windows-PushNotifications-Platform[6192]: 必须启用 GP 和 MDM 中的云通知以接收推送通知。GroupPolicyValue: true，MDMPolicyValue: true。
-Microsoft-Windows-PushNotifications-Platform[4240]: 必须启用 GP 和 MDM 中的云通知以接收推送通知。GroupPolicyValue: true，MDMPolicyValue: true。
-Microsoft-Windows-PushNotifications-Platform[6192]: 必须启用 GP 和 MDM 中的云通知以接收推送通知。GroupPolicyValue: true，MDMPolicyValue: true。
-Microsoft-Windows-GroupPolicy[15828]: 已检测到以前的组策略客户端服务实例。 参数: 1f6238f6-4bb9-4fb6-826c-7be878cc4e421535446591000

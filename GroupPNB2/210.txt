@@ -1,0 +1,2 @@
+PNB10>dnsquery3 1517276167 74-25-8a-c2-37-00 202.112.137.78 57295 202.98.5.68 53 artistpicserver.kuwo.cn
+PNB10>dnsquery3 1517276167 74-25-8a-c2-37-00 202.112.137.78 63118 202.98.5.68 53 artistpicserver.kuwo.cn

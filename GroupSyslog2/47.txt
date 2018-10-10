@@ -1,0 +1,1 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 完成 WNP 传输层 TLS 协商，代码为 操作成功完成。。1535446630000

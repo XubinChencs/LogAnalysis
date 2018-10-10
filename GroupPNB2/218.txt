@@ -1,0 +1,9 @@
+PNB10>dnsquery3 1517276739 00-24-ac-02-76-1c 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 00-24-ac-02-76-1c 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 74-25-8a-c2-37-00 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 74-25-8a-c2-37-00 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 00-24-ac-02-76-1c 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 74-25-8a-c2-37-00 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 74-25-8a-c2-37-00 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 00-24-ac-02-76-1c 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com
+PNB10>dnsquery3 1517276739 74-25-8a-c2-37-00 202.112.137.78 62682 10.1.2.8 53 teredo.ipv6.microsoft.com

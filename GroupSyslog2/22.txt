@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。1535446591000
+Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。1535448372000

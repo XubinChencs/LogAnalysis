@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 初始化针对端口 443 上服务器 client.wns.windows.com 的 WNP 传输层初始服务器连接。1535446629000
+Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 初始化 WNP 传输层 TLS 协商。1535446630000

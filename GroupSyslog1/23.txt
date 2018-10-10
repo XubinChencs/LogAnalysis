@@ -1,0 +1,4 @@
+Microsoft-Windows-GroupPolicy[15828]: 组策略会话已返回到 winlogon。
+Microsoft-Windows-GroupPolicy[15828]: 组策略会话已返回到 winlogon。
+Microsoft-Windows-GroupPolicy[16244]: 组策略会话已返回到 winlogon。
+Microsoft-Windows-GroupPolicy[16244]: 组策略会话已返回到 winlogon。

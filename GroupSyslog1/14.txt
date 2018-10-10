@@ -1,0 +1,2 @@
+Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。
+Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。

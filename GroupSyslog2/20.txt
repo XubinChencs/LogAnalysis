@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: 连接提供程序的状态已更改为 7。1535446591000
+Microsoft-Windows-PushNotifications-Platform[6192]: 连接提供程序的状态已更改为 7。1535446591000

@@ -75,8 +75,12 @@ public class Spell {
 		}
 
 		if (maxSeqLen * 2 > tokens.size() && targetLCS != null) {
-			targetLCS.setSeq(this.getLcsSeq(targetLCS.getSeq(), tokens));
-			targetLCS.append(log);
+			List<String> oldLCS = targetLCS.getSeq();
+			List<String> newLCS = this.getLcsSeq(targetLCS.getSeq(), tokens);
+//			if (newLCS.size() > oldLCS.size()) {
+				targetLCS.setSeq(newLCS);
+				targetLCS.append(log);
+//			}
 		} else {
 			LCS lcs = new LCS();
 			lcs.setSeq(tokens);
@@ -134,8 +138,8 @@ public class Spell {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<String> logs = IOHelper.getInstance().readFromFile("RHZZ-syslog.txt");
-		logs = DataHelper.getInstance().jsonsToList(logs, "@message", "timestamp");
+		List<String> logs = IOHelper.getInstance().readFromFile("target.txt");
+		logs = DataHelper.getInstance().jsonsToList(logs, "message");
 		Spell spell = new Spell();
 		spell.compute(logs);
 		spell.display();
