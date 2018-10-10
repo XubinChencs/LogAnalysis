@@ -1,0 +1,4 @@
+Microsoft-Client-Licensing-Platform[14548]: ClipSVC 服务正在启动。调用方: TriggerStarted
+Microsoft-Client-Licensing-Platform[16232]: ClipSVC 服务正在启动。调用方: TriggerStarted
+Microsoft-Client-Licensing-Platform[12300]: ClipSVC 服务正在启动。调用方: TriggerStarted
+Microsoft-Client-Licensing-Platform[8744]: ClipSVC 服务正在启动。调用方: TriggerStarted

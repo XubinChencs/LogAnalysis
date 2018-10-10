@@ -1,0 +1,4 @@
+Microsoft-Windows-PushNotifications-Platform[6192]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。1535446591000
+Microsoft-Windows-PushNotifications-Platform[4240]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。1535446591000
+Microsoft-Windows-PushNotifications-Platform[6192]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。1535448372000
+Microsoft-Windows-PushNotifications-Platform[4240]: 没有可用的 Internet 连接，ConnectWork 已排队等待下一次网络状态更改。1535448372000

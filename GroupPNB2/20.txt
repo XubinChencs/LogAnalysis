@@ -1,0 +1,7 @@
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 192.168.226.12 62524 8.8.8.8 53 rq.upgrade.cloud.duba.net
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 10.137.89.85 61476 8.8.8.8 53 pcs-sdk-server.alibaba.com
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 192.168.227.66 1030 8.8.8.8 53 ssxd.mediav.com
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 211.71.8.76 39781 8.8.8.8 53 www.baidu.com
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 219.224.162.51 39781 8.8.8.8 53 www.sina.com
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 219.224.140.16 54109 8.8.8.8 53 v10.vortex-win.data.microsoft.com
+PNB10>dnsquery3 1517278482 74-25-8a-c2-37-00 10.137.61.9 52589 8.8.8.8 53 mam.netease.com

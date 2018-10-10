@@ -1,5 +1,0 @@
-Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 完成 WNP 传输层 TLS 协商，代码为 操作成功完成。。
-Microsoft-Windows-PushNotifications-Platform[4240]: Data Connection 的 WNP 传输层调用了 InitializeSecurityContext 并收到了返回代码 0x90312。1535446630000
-Microsoft-Windows-PushNotifications-Platform[4240]: Data Connection 的 WNP 传输层调用了 InitializeSecurityContext 并收到了返回代码 0x90312。1535446630000
-Microsoft-Windows-PushNotifications-Platform[4240]: Data Connection 的 WNP 传输层调用了 InitializeSecurityContext 并收到了返回代码 0x80090318。1535446630000
-Microsoft-Windows-PushNotifications-Platform[4240]: Data Connection 的 WNP 传输层调用了 InitializeSecurityContext 并收到了返回代码 0x0。1535446630000

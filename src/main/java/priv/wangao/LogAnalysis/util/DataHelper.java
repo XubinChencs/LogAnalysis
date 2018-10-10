@@ -23,7 +23,8 @@ public class DataHelper {
 			JSONObject json = JSONObject.fromObject(item);
 			StringBuilder curLine = new StringBuilder();
 			for (String col : cols) {
-				curLine.append(json.getString(col));
+				//System.out.println(json.getString(col).substring(35));
+				curLine.append(json.getString(col).substring(35));
 			}
 			result.add(curLine.toString());
 		});

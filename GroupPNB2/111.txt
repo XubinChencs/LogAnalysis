@@ -1,0 +1,2 @@
+PNB10>dnsquery3 1517276510 74-25-8a-c2-37-00 202.112.128.54 3554 219.141.140.10 53 dailyupdate.wangwang.taobao.com.danuoyi.tbcache.com
+PNB10>dnsquery3 1517276510 74-25-8a-c2-37-00 202.112.128.54 3657 219.141.136.10 53 web.im.weibo.com

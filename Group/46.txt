@@ -1,3 +1,0 @@
-Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 0 [UserId] 0x0 [ErrorCode]。
-Microsoft-Windows-PushNotifications-Platform[4240]: 已完成向 Windows 推送通知服务添加新用户。00180002C8BACE70 [DeviceId] 17056888 [UserId] 0x0 [ErrorCode]。
-Microsoft-Windows-PushNotifications-Platform[4240]: 已为 Data Connection 完成针对端口 443 上服务器 client.wns.windows.com 的 WNP 传输层初始服务器连接。1535446630000

@@ -1,4 +1,0 @@
-Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。
-Microsoft-Windows-PushNotifications-Platform[4240]: WNP 传输层已与 Windows 推送通知服务(WNS)断开连接，因为网络连接中断。
-Microsoft-Client-Licensing-Platform[16232]: ClipSVC 服务正在启动。调用方: TriggerStarted1535446529000
-Microsoft-Client-Licensing-Platform[16232]: ClipSVC 服务已关闭。1535446829000

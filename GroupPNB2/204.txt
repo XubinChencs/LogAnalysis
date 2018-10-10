@@ -1,0 +1,1 @@
+PNB10>dnsquery3 1517276746 74-25-8a-c2-37-00 10.143.1.187 65159 208.67.220.220 53 mapi.appvipshop.vipgslb.com

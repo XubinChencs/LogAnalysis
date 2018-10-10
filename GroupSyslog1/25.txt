@@ -1,0 +1,2 @@
+Microsoft-Windows-GroupPolicy[15828]: 组策略从会话 0 的 Winlogon 接收到通知 创建会话。
+Microsoft-Windows-GroupPolicy[16244]: 组策略从会话 0 的 Winlogon 接收到通知 创建会话。

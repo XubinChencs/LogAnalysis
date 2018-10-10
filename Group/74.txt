@@ -1,2 +1,0 @@
-Microsoft-Windows-GroupPolicy[16244]: 初始化服务实例状态以检测以前的服务实例。
-Microsoft-Client-Licensing-Platform[8744]: ClipSVC 服务正在启动。调用方: TriggerStarted1535448265000

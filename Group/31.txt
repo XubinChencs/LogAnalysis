@@ -1,2 +1,0 @@
-Microsoft-Windows-GroupPolicy[15828]: 已成功完成组策略服务初始化阶段。
-Microsoft-Windows-GroupPolicy[15828]: 初始化和读取组策略客户端服务的当前服务配置。1535446591000

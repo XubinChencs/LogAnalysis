@@ -1,0 +1,1 @@
+Microsoft-Windows-Kernel-EventTracing[4]: 会话“AutoLogger-Diagtrack-Listener”已停止，原因是存在以下错误: 0xC00001881535447572000

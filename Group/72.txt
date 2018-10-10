@@ -1,3 +1,0 @@
-Microsoft-Windows-GroupPolicy[16244]: 组策略会话已启动。
-Microsoft-Windows-GroupPolicy[16244]: 组策略会话已启动。
-Microsoft-Windows-Kernel-EventTracing[4]: 会话“AutoLogger-Diagtrack-Listener”已停止，原因是存在以下错误: 0xC00001881535447572000

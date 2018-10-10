@@ -1,0 +1,2 @@
+Microsoft-Windows-PushNotifications-Platform[4240]: Internet 连接状态已更改为“已连接”(上一次的已知状态为“false”)，正在提交挂起的工作项。1535446629000
+Microsoft-Windows-PushNotifications-Platform[6192]: Internet 连接状态已更改为“已连接”(上一次的已知状态为“false”)，正在提交挂起的工作项。1535446629000

@@ -1,3 +1,0 @@
-Microsoft-Windows-Security-SPP[0]: 规则引擎已报告 VL 激活尝试失败。  原因:0xC004F074  AppId = 0ff1ce15-a989-479d-af46-f275c6370663，SkuId = d450596f-894d-49e0-966a-fd39ed4c4c64  触发器=TimerEvent
-Microsoft-Windows-AppXDeployment[2512]: Microsoft.WindowsStore_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535446859000
-Microsoft-Windows-AppXDeployment[2512]: Microsoft.WindowsStore_8wekyb3d8bbwe 注册状态良好，跳过重新注册1535446859000

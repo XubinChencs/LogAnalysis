@@ -1,4 +1,0 @@
-Microsoft-Client-Licensing-Platform[16232]: ClipSVC 服务正在运行。版本 10.0.17134.1
-Microsoft-Client-Licensing-Platform[16232]: ClipSVC 服务已关闭。
-Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。1535446088000
-Microsoft-Windows-DNS-Client[960]: 在没有配置的 DNS 服务器响应之后，名称 tconf.f.360.cn 的名称解析超时。1535448337000

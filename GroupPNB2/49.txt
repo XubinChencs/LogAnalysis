@@ -1,0 +1,3 @@
+PNB10>dnsquery3 1517276510 74-25-8a-c2-37-00 202.112.139.5 54365 223.6.6.6 53 tc.dl.pinyin.sogoucdn.com
+PNB10>dnsquery3 1517276510 74-25-8a-c2-37-00 202.112.139.5 49850 223.5.5.5 53 ping.pinyin.sogou.com
+PNB10>dnsquery3 1517276510 74-25-8a-c2-37-00 202.112.139.5 49850 223.6.6.6 53 ping.pinyin.sogou.com

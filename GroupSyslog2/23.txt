@@ -1,0 +1,4 @@
+Microsoft-Windows-PushNotifications-Platform[6192]: 在启动时，需要使用 Windows 推送通知平台进行连接，ValidChannelsExist : true。1535446591000
+Microsoft-Windows-PushNotifications-Platform[4240]: 在启动时，需要使用 Windows 推送通知平台进行连接，ValidChannelsExist : true。1535446591000
+Microsoft-Windows-PushNotifications-Platform[4240]: 在启动时，需要使用 Windows 推送通知平台进行连接，ValidChannelsExist : true。1535448372000
+Microsoft-Windows-PushNotifications-Platform[6192]: 在启动时，需要使用 Windows 推送通知平台进行连接，ValidChannelsExist : true。1535448372000
