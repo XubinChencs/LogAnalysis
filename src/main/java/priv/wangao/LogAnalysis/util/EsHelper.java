@@ -4,9 +4,12 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
@@ -34,7 +37,7 @@ public class EsHelper {
 	// addrs : 集群地址数组
 	private List<String> addrs = new ArrayList<String>();
 	// DEFAULT_BATCHSIZE : 滚动查询批量默认大小
-	private final int DEFAULT_BATCHSIZE = 1000;
+	private final int DEFAULT_BATCHSIZE = 10000;
 	// DEFAULT_BATCHSIZE : 滚动查询默认超时时间
 	private final int DEFAULT_TTLSECOND = 1200;
 	// batchSize : 滚动查询批量大小
@@ -141,6 +144,42 @@ public class EsHelper {
 		this.ttlSecond = ttlSecond;
 	}
 
+	/** 
+	* @Title: executeGetIndices 
+	* @Description: 根据正则表达式获取索引名称，如果表达式 数组为 null，则返回所有的索引名称
+	* @param patterns 正则表达式数组
+	* @return 索引名称列表
+	* @return: List<String>
+	*/ 
+	public String[] executeGetIndices(String[] patterns) {
+		String[] indices =  this.client.admin().indices().prepareGetIndex().execute().actionGet().indices();
+		if (patterns != null && patterns.length > 0) {
+			List<String> result = new ArrayList<String>();
+			for (String index : indices) {
+				if (RegExpHelper.getInstance().isMatch(patterns, index)) {
+					result.add(index);
+				}
+			}
+			indices = result.toArray(new String[result.size()]);
+		}
+		return indices;
+	}
+
+	/**
+	 * @Title: executeMatchAllQuery
+	 * @Description: 执行无条件查询
+	 * @param indices
+	 *            索引名
+	 * @param includes
+	 *            包含列
+	 * @param excludes
+	 *            不包含列
+	 * @param outputPath
+	 *            输出路径
+	 * @param maxCnt
+	 *            获取最大个数限制
+	 * @return: void
+	 */
 	public void executeMatchAllQuery(String[] indices, String[] includes, String[] excludes, String outputPath,
 			int maxCnt) {
 		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
@@ -153,12 +192,31 @@ public class EsHelper {
 		doScroll(scrollResp, outputPath, maxCnt);
 	}
 
+	/**
+	 * @Title: executeTermsFilter
+	 * @Description: 有条件过滤查询
+	 * @param indices
+	 *            索引名
+	 * @param terms
+	 *            Map 结构的过滤条件
+	 * @param sorts
+	 *            排序方式
+	 * @param includes
+	 *            包含列
+	 * @param excludes
+	 *            不包含列
+	 * @param outputPath
+	 *            输出路径
+	 * @param maxCnt
+	 *            获取最大个数限制
+	 * @return: void
+	 */
 	public void executeTermsFilter(String[] indices, Map<String, String> terms, Map<String, String> sorts,
 			String[] includes, String[] excludes, String outputPath, int maxCnt) {
 		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
 				: this.client.prepareSearch(indices);
 		searchQuery.setFetchSource(includes, excludes);
-		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.termsQuery(terms));
+		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.multTermQuery(terms));
 
 		for (Map.Entry<String, String> sort : sorts.entrySet()) {
 			if (sort.getValue().equals("desc")) {
@@ -171,6 +229,17 @@ public class EsHelper {
 		doScroll(scrollResp, outputPath, maxCnt);
 	}
 
+	/**
+	 * @Title: doScroll
+	 * @Description: 执行滚动查询
+	 * @param scrollResp
+	 *            滚动查询请求结果
+	 * @param outputPath
+	 *            结果输出路径
+	 * @param maxCnt
+	 *            获取最大个数限制
+	 * @return: void
+	 */
 	private void doScroll(SearchResponse scrollResp, String outputPath, int maxCnt) {
 		if (outputPath != null) {
 			File file = new File(outputPath);
@@ -178,57 +247,83 @@ public class EsHelper {
 				file.delete();
 			}
 		}
+		
+		System.out.println("命中总数量："+scrollResp.getHits().getTotalHits());
+		
+		ExecutorService executorService = Executors.newFixedThreadPool(4);
+		List<String> batch = new ArrayList<String>();
+		
 		int count = 0;
 		do {
+			batch.clear();
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
-				System.out.println(hit.getSourceAsString());
+				System.out.println(count + "->" + hit.getSourceAsString());
+				
 				if (outputPath != null) {
-					IOHelper.getInstance().writeToFile(hit.getSourceAsString() + "\r\n", outputPath, true);
+					batch.add(hit.getSourceAsString());
 				}
 				count++;
 				if (maxCnt > 0 && count >= maxCnt) {
 					break;
 				}
 			}
+			if (outputPath != null) {
+				IOHelper.getInstance().writeToFile(batch, outputPath, true);
+			}
+			
 			if (maxCnt > 0 && count >= maxCnt) {
 				break;
 			}
 			scrollResp = client.prepareSearchScroll(scrollResp.getScrollId())
 					.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).execute().actionGet();
 		} while (scrollResp.getHits().getHits().length != 0);
+		
+		executorService.shutdown();
 	}
 
+	/**
+	 * @Title: matchAllQuery
+	 * @Description: 构造无条件查询语句
+	 * @return 无条件查询语句
+	 * @return: QueryBuilder
+	 */
 	private QueryBuilder matchAllQuery() {
 		return QueryBuilders.matchAllQuery();
 	}
 
-	private QueryBuilder termsQuery(Map<String, String> terms) {
+	/**
+	 * @Title: multTermQuery
+	 * @Description: 根据传入的 Map 构造多短语过滤查询语句
+	 * @param terms
+	 *            Map 结构的查询条件
+	 * @return 多短语过滤查询语句
+	 * @return: QueryBuilder
+	 */
+	private QueryBuilder multTermQuery(Map<String, String> terms) {
 		BoolQueryBuilder result = QueryBuilders.boolQuery();
-		for (Map.Entry<String, String> entry : terms.entrySet()) {
-			result.filter(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
+		if (terms != null) {
+			for (Map.Entry<String, String> entry : terms.entrySet()) {
+				result.filter(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
+			}
 		}
+		
 		return result;
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+		// EsHelper esHelper = new EsHelper("nic-multi-logs", "10.1.1.201:9300");
+		// esHelper.executeMatchAllQuery(new String[] { "niclog-4th-2018.01.30" }, new
+		// String[] { "message" }, null,
+		// "target.txt", 100000);
 		EsHelper esHelper = new EsHelper("my-cluster", "192.168.1.78:9300");
 		Map<String, String> terms = new HashMap<String, String>() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
-
 			{
 				put("host", "192.168.1.102");
 			}
 		};
 		Map<String, String> sorts = new HashMap<String, String>() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
-
 			{
 				put("timestamp", "asc");
 			}

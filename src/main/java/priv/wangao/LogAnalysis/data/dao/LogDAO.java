@@ -45,4 +45,21 @@ public interface LogDAO {
 	 */
 	void filterTermsEntry(String[] indices, Map<String, String> terms, Map<String, String> sorts, String[] includes,
 			String[] excludes, String outputPath, int maxCnt);
+	
+	/** 
+	* @Title: getIndices 
+	* @Description: 获取所有索引的索引名 
+	* @return 索引名数组
+	* @return: String[]
+	*/ 
+	String[] getIndices();
+	
+	/** 
+	* @Title: getIndices 
+	* @Description: 获取索引名命中正则表达式的索引名 
+	* @param patterns 正则表达式数组
+	* @return 索引名数组
+	* @return: String[]
+	*/ 
+	String[] getIndices(String[] patterns);
 }
