@@ -1,46 +1,22 @@
 package priv.wangao.LogAnalysis;
 
-<<<<<<< HEAD
-import net.sf.json.JSONObject;
-import priv.wangao.LogAnalysis.constant.EAction;
-=======
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 
 import priv.wangao.LogAnalysis.constant.Common;
-import priv.wangao.LogAnalysis.util.GeoLiteHelper;
 import priv.wangao.LogAnalysis.util.HdfsHelper;
 import priv.wangao.LogAnalysis.util.IOHelper;
 import priv.wangao.LogAnalysis.vo.IPVisited;
->>>>>>> es2.4
 
 /**
  * Hello world!
  *
  */
-<<<<<<< HEAD
-public class App 
-{
-    public static void main( String[] args )
-    {
-        EAction.success.getValue().display();
-        EAction.fail.getValue().display();
-        EAction.success.getValue().display();
-    }
-=======
+
 public class App {
 
 	public static void main(String[] args) {
@@ -92,5 +68,4 @@ public class App {
 		System.err.println("恶意访问总数:" + malicious_count);
 
 	}
->>>>>>> es2.4
 }

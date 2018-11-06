@@ -4,10 +4,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.Arrays;
->>>>>>> es2.4
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
