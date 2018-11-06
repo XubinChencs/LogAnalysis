@@ -17,6 +17,10 @@ public class DataHelper {
 		
 	}
 	
+	public JSONObject stringToJson(String data) {
+		return JSONObject.fromObject(data);
+	}
+	
 	public List<String> jsonsToList(List<String> data, String... cols) {
 		List<String> result = new ArrayList<String>();
 		data.forEach(item -> {
