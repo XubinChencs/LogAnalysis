@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -41,24 +43,124 @@ public class DataProcessingImpl implements IDataProcessing {
 
 	@Override
 	public void pullFromEs() {
-		LogDAO logGen = LogGenFactory.build("act-multi-logs", "192.168.105.132:9300");
+		LogDAO logGen = LogGenFactory.build("nic-multi-logs", "10.1.1.201:9300");
+		
+		System.err.println(String.join(",", logGen.getIndices()));
+	
+		
+		
 		String[] target = logGen.getIndices(new String[] { 
-			"act-nat-2018.10.29", "act-nat-2018.10.30", "act-nat-2018.10.31",
-			"act-nat-2018.11.01", "act-nat-2018.11.02", "act-nat-2018.11.03",
-			"act-nat-2018.11.04"
+			"niclog-4th-2018\\.11\\..*",
 		});
 		
+		ExecutorService executorService = Executors.newFixedThreadPool(7);
+		
 		for (String index : target) {
-			logGen.filterTermsEntry(new String[] { index }, null, new HashMap<String, String>() {
+			executorService.execute(new Runnable() {
 
-				// serialVersionUID :
-				private static final long serialVersionUID = 1L;
-				{
-					put("@timestamp", "asc");
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					
+					logGen.containTermEntry(new String[] { index }, "source-IP", new ArrayList<String>() {
+						// serialVersionUID :
+						private static final long serialVersionUID = 1L;
+						{
+							add("219.224.171.2");
+							add("219.224.171.3");
+							add("219.224.171.4");
+							add("219.224.171.5");
+							add("219.224.171.6");
+							add("219.224.171.7");
+							add("219.224.171.8");
+							add("219.224.171.9");
+							add("219.224.171.10");
+							add("219.224.171.11");
+							add("219.224.171.12");
+							add("219.224.171.13");
+							add("219.224.171.14");
+							add("219.224.171.15");
+							add("219.224.171.16");
+							add("219.224.171.17");
+							add("219.224.171.18");
+							add("219.224.171.19");
+							add("219.224.171.20");
+							add("219.224.171.21");
+							add("219.224.171.22");
+							add("219.224.171.23");
+							add("219.224.171.24");
+							add("219.224.171.25");
+							add("219.224.171.26");
+							add("219.224.171.27");
+							add("219.224.171.28");
+							add("219.224.171.29");
+							add("219.224.171.30");
+							add("219.224.171.31");
+							add("219.224.171.32");
+							add("219.224.171.33");
+							add("219.224.171.34");
+							add("219.224.171.35");
+							add("219.224.171.36");
+							add("219.224.171.37");
+							add("219.224.171.38");
+							add("219.224.171.39");
+							add("219.224.171.40");
+							add("219.224.171.41");
+							add("219.224.171.42");
+							add("219.224.171.43");
+							add("219.224.171.44");
+							add("219.224.171.45");
+							add("219.224.171.46");
+							add("219.224.171.47");
+							add("219.224.171.48");
+							add("219.224.171.49");
+							add("219.224.171.50");
+							add("219.224.171.51");
+							add("219.224.171.52");
+							add("219.224.171.53");
+							add("219.224.171.54");
+							add("219.224.171.55");
+							add("219.224.171.56");
+							add("219.224.171.57");
+							add("219.224.171.58");
+							add("219.224.171.59");
+							add("219.224.171.60");
+							add("219.224.171.61");
+							add("219.224.171.62");
+							add("219.224.171.63");
+							add("219.224.171.64");
+						}
+					}, new HashMap<String, String>() {
+
+						// serialVersionUID :
+						private static final long serialVersionUID = 1L;
+						{
+							put("@timestamp", "asc");
+						}
+						
+					}, new String[] {
+						"time", "host", "operation", 
+						"source-mac", "source-IP", "source-port",
+						"server-IP", "server-port", "content"
+					}, null, "nic\\" + index + ".txt", 0);
+					
+//					logGen.filterTermsEntry(new String[] { index }, null 
+//							, new HashMap<String, String>() {
+//
+//						// serialVersionUID :
+//						private static final long serialVersionUID = 1L;
+//						{
+//							put("@timestamp", "asc");
+//						}
+//						
+//					}, null, null, "nat\\" + index + ".txt", 0);
 				}
 				
-			}, new String[] { "message" }, null, "act\\" + index + ".txt", 0);
+			});
+			
 		}
+		
+		executorService.shutdown();
 		
 		//(target, null, null, "act\\act-gpu-auth-2018.10.29-2018.11.04.txt", 0);
 	}

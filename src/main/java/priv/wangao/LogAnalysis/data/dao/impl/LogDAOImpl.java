@@ -1,5 +1,6 @@
 package priv.wangao.LogAnalysis.data.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import priv.wangao.LogAnalysis.data.dao.LogDAO;
@@ -62,6 +63,31 @@ public class LogDAOImpl implements LogDAO {
 	@Override
 	public String[] getIndices(String[] patterns) {
 		return this.esHelper.executeGetIndices(patterns);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * priv.wangao.LogAnalysis.data.dao.LogDAO#deleteIndices(java.lang.String[])
+	 */
+	@Override
+	public boolean deleteIndices(String[] indices) {
+		return this.esHelper.executeDeleteIndices(indices);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * priv.wangao.LogAnalysis.data.dao.LogDAO#containTermEntry(java.lang.String[],
+	 * java.lang.String, java.util.List, java.util.Map, java.lang.String[],
+	 * java.lang.String[], java.lang.String, int)
+	 */
+	@Override
+	public void containTermEntry(String[] indices, String key, List<String> values, Map<String, String> sorts,
+			String[] includes, String[] excludes, String outputPath, int maxCnt) {
+		this.esHelper.executeContainTermFilter(indices, key, values, sorts, includes, excludes, outputPath, maxCnt);
 	}
 
 }

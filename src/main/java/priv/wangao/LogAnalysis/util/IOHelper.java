@@ -90,6 +90,29 @@ public class IOHelper {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<String> readFromCSV(String filePath, int target, String separator) {
+		List<String> result = new ArrayList<String>();
+		try (FileInputStream fis = new FileInputStream(new File(filePath));
+				InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+				BufferedReader br = new BufferedReader(isr);) {
+			String curLine = null;
+
+			String[] split = null;
+			System.err.println(target);
+			while ((curLine = br.readLine()) != null) {
+				split = curLine.split(separator);
+				if (split.length > target) {
+					result.add(curLine.split(separator)[target]);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	public List<String> readFromCSV(String filePath, String col, String separator) {
 		List<String> result = new ArrayList<String>();

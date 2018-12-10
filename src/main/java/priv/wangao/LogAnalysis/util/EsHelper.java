@@ -144,16 +144,16 @@ public class EsHelper {
 		this.ttlSecond = ttlSecond;
 	}
 
-
-	/** 
-	* @Title: executeGetIndices 
-	* @Description: 根据正则表达式获取索引名称，如果表达式 数组为 null，则返回所有的索引名称
-	* @param patterns 正则表达式数组
-	* @return 索引名称列表
-	* @return: List<String>
-	*/ 
+	/**
+	 * @Title: executeGetIndices
+	 * @Description: 根据正则表达式获取索引名称，如果表达式 数组为 null，则返回所有的索引名称
+	 * @param patterns
+	 *            正则表达式数组
+	 * @return 索引名称列表
+	 * @return: List<String>
+	 */
 	public String[] executeGetIndices(String[] patterns) {
-		String[] indices =  this.client.admin().indices().prepareGetIndex().execute().actionGet().indices();
+		String[] indices = this.client.admin().indices().prepareGetIndex().execute().actionGet().indices();
 		if (patterns != null && patterns.length > 0) {
 			List<String> result = new ArrayList<String>();
 			for (String index : indices) {
@@ -164,6 +164,18 @@ public class EsHelper {
 			indices = result.toArray(new String[result.size()]);
 		}
 		return indices;
+	}
+
+	/**
+	 * @Title: executeDeleteIndices
+	 * @Description: 根据索引名称数组删除索引
+	 * @param indices
+	 *            索引名称数组
+	 * @return 是否删除成功，true 表示成功，false 表示失败
+	 * @return: boolean
+	 */
+	public boolean executeDeleteIndices(String[] indices) {
+		return this.client.admin().indices().prepareDelete(indices).execute().actionGet().isAcknowledged();
 	}
 
 	/**
@@ -192,7 +204,6 @@ public class EsHelper {
 		SearchResponse scrollResp = searchQuery.get();
 		doScroll(scrollResp, outputPath, maxCnt);
 	}
-
 
 	/**
 	 * @Title: executeTermsFilter
@@ -232,6 +243,45 @@ public class EsHelper {
 	}
 
 	/**
+	 * @Title: executeContainTermFilter
+	 * @Description: 数组查询某一字段是否在指定范围内
+	 * @param indices
+	 *            索引名
+	 * @param key
+	 *            查找字段名称
+	 * @param values
+	 *            查找值集合
+	 * @param sorts
+	 *            排序方式
+	 * @param includes
+	 *            包含列
+	 * @param excludes
+	 *            不包含列
+	 * @param outputPath
+	 *            输出路径
+	 * @param maxCnt
+	 *            获取最大个数限制
+	 * @return: void
+	 */
+	public void executeContainTermFilter(String[] indices, String key, List<String> values, Map<String, String> sorts,
+			String[] includes, String[] excludes, String outputPath, int maxCnt) {
+		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
+				: this.client.prepareSearch(indices);
+		searchQuery.setFetchSource(includes, excludes);
+		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.containTermQuery(key, values));
+
+		for (Map.Entry<String, String> sort : sorts.entrySet()) {
+			if (sort.getValue().equals("desc")) {
+				searchQuery.addSort(sort.getKey(), SortOrder.DESC);
+			} else {
+				searchQuery.addSort(sort.getKey(), SortOrder.ASC);
+			}
+		}
+		SearchResponse scrollResp = searchQuery.get();
+		doScroll(scrollResp, outputPath, maxCnt);
+	}
+
+	/**
 	 * @Title: doScroll
 	 * @Description: 执行滚动查询
 	 * @param scrollResp
@@ -249,18 +299,18 @@ public class EsHelper {
 				file.delete();
 			}
 		}
-		
-		System.out.println("命中总数量："+scrollResp.getHits().getTotalHits());
-		
+
+		System.out.println("命中总数量：" + scrollResp.getHits().getTotalHits());
+
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		List<String> batch = new ArrayList<String>();
-		
+
 		int count = 0;
 		do {
 			batch.clear();
 			for (SearchHit hit : scrollResp.getHits().getHits()) {
 				System.out.println(count + "->" + hit.getSourceAsString());
-				
+
 				if (outputPath != null) {
 					batch.add(hit.getSourceAsString());
 				}
@@ -272,14 +322,14 @@ public class EsHelper {
 			if (outputPath != null) {
 				IOHelper.getInstance().writeToFile(batch, outputPath, true);
 			}
-			
+
 			if (maxCnt > 0 && count >= maxCnt) {
 				break;
 			}
 			scrollResp = client.prepareSearchScroll(scrollResp.getScrollId())
 					.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).execute().actionGet();
 		} while (scrollResp.getHits().getHits().length != 0);
-		
+
 		executorService.shutdown();
 	}
 
@@ -308,7 +358,17 @@ public class EsHelper {
 				result.filter(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
 			}
 		}
-		
+
+		return result;
+	}
+
+	private QueryBuilder containTermQuery(String key, List<String> values) {
+		BoolQueryBuilder result = QueryBuilders.boolQuery();
+		if (values != null) {
+			for (String value : values) {
+				result.should(QueryBuilders.termQuery(key, value));
+			}
+		}
 		return result;
 	}
 
