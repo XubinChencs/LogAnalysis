@@ -90,4 +90,14 @@ public class LogDAOImpl implements LogDAO {
 		this.esHelper.executeContainTermFilter(indices, key, values, sorts, includes, excludes, outputPath, maxCnt);
 	}
 
+	/* (non-Javadoc)
+	 * @see priv.wangao.LogAnalysis.data.dao.LogDAO#rangeEntry(java.lang.String[], java.lang.String, java.lang.String, java.lang.String, java.lang.String[], java.lang.String[], java.lang.String, int)
+	 */
+	@Override
+	public String rangeEntry(String[] indices, String term, String from, String to, String[] includes, String[] excludes,
+			String outputPath, int maxCnt) {
+		// TODO Auto-generated method stub
+		return this.esHelper.executeRangeTermFilter(indices, term, from, to, includes, excludes, outputPath, maxCnt);
+	}
+
 }

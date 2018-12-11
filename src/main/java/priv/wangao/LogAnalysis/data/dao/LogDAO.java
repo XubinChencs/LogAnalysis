@@ -48,6 +48,30 @@ public interface LogDAO {
 			String[] excludes, String outputPath, int maxCnt);
 
 	/**
+	 * @Title: rangeEntry
+	 * @Description: 查找指定范围内日志
+	 * @param indices
+	 *            目标索引，为null则查询所有
+	 * @param term
+	 *            目标字段
+	 * @param from
+	 *            起始点
+	 * @param to
+	 *            终止点
+	 * @param includes
+	 *            需要的字段集
+	 * @param excludes
+	 *            不需要的字段集
+	 * @param outputPath
+	 *            目标路径
+	 * @param maxCnt
+	 *            最大获取长度，为0则获取所有
+	 * @return: void
+	 */
+	String rangeEntry(String[] indices, String term, String from, String to, String[] includes, String[] excludes,
+			String outputPath, int maxCnt);
+
+	/**
 	 * @Title: containTermEntry
 	 * @Description: 执行数组查询
 	 * @param indices

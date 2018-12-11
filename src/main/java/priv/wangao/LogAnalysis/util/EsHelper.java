@@ -21,6 +21,7 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortOrder;
 
@@ -206,6 +207,39 @@ public class EsHelper {
 	}
 
 	/**
+	 * @Title: executeRangeTermFilter
+	 * @Description: 执行范围查询
+	 * @param indices
+	 *            索引名
+	 * @param term
+	 *            目标字段
+	 * @param from
+	 *            起始值，为 null 则从最初开始
+	 * @param to
+	 *            终止值，为 null 则到最后结束
+	 * @param includes
+	 *            包含列
+	 * @param excludes
+	 *            不包含列
+	 * @param outputPath
+	 *            输出路径
+	 * @param maxCnt
+	 *            获取最大个数限制
+	 * @return 
+	 * @return: String
+	 */
+	public String executeRangeTermFilter(String[] indices, String term, String from, String to, String[] includes,
+			String[] excludes, String outputPath, int maxCnt) {
+		// TODO Auto-generated method stub
+		SearchRequestBuilder searchQuery = indices == null ? this.client.prepareSearch()
+				: this.client.prepareSearch(indices);
+		searchQuery.setFetchSource(includes, excludes);
+		searchQuery.setScroll(TimeValue.timeValueSeconds(this.ttlSecond)).setQuery(this.rangeQuery(term, from, to));
+		SearchResponse scrollResp = searchQuery.get();
+		return doScroll(scrollResp, outputPath, maxCnt);
+	}
+
+	/**
 	 * @Title: executeTermsFilter
 	 * @Description: 有条件过滤查询
 	 * @param indices
@@ -292,13 +326,15 @@ public class EsHelper {
 	 *            获取最大个数限制
 	 * @return: void
 	 */
-	private void doScroll(SearchResponse scrollResp, String outputPath, int maxCnt) {
+	private String doScroll(SearchResponse scrollResp, String outputPath, int maxCnt) {
 		if (outputPath != null) {
 			File file = new File(outputPath);
 			if (file.exists() == true) {
 				file.delete();
 			}
 		}
+		
+		String result = null;
 
 		System.out.println("命中总数量：" + scrollResp.getHits().getTotalHits());
 
@@ -313,6 +349,7 @@ public class EsHelper {
 
 				if (outputPath != null) {
 					batch.add(hit.getSourceAsString());
+					result = (String) hit.getSource().get("@timestamp");
 				}
 				count++;
 				if (maxCnt > 0 && count >= maxCnt) {
@@ -331,6 +368,8 @@ public class EsHelper {
 		} while (scrollResp.getHits().getHits().length != 0);
 
 		executorService.shutdown();
+		
+		return result;
 	}
 
 	/**
@@ -341,6 +380,19 @@ public class EsHelper {
 	 */
 	private QueryBuilder matchAllQuery() {
 		return QueryBuilders.matchAllQuery();
+	}
+
+	private QueryBuilder rangeQuery(String term, String from, String to) {
+		RangeQueryBuilder result = QueryBuilders.rangeQuery(term);
+		if (from != null) {
+			result.from(from);
+		}
+
+		if (to != null) {
+			result.to(to);
+		}
+
+		return result;
 	}
 
 	/**

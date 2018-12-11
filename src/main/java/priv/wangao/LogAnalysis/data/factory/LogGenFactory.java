@@ -1,8 +1,5 @@
 package priv.wangao.LogAnalysis.data.factory;
 
-import java.util.Date;
-import java.util.HashMap;
-
 import priv.wangao.LogAnalysis.data.dao.LogDAO;
 import priv.wangao.LogAnalysis.data.dao.impl.LogDAOImpl;
 
